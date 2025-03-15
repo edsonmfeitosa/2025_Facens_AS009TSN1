@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomia do CSS</title>
+</head>
+<style>
+    /* tipos de propriedades */
+    .seletor {
+        /* por código */
+        color: #a4780f;
+        /* por unidade de medida */
+        font-size: 80px;
+        /* por nome */
+        background-color: aqua;
+        /* por função */
+        width: calc(100% - 80px);
+        /* por código, nome e unidade de medida */
+        border: #0f0 5px solid;
+    }
+    #exemplo:hover {
+        /* por pseudo-classe */
+        color: #f00;
+        background-color: black;
+    }
+    .seletor::first-letter {
+        /* por pseudo-elemento */
+        font-size: 200px;
+        color: #0f0;
+    }
+</style>
+<body>
+    <div class="seletor">
+        <span id="exemplo">C</span>SS - Folha de estilo em cascata
+    </div>
+</body>
+</html>
