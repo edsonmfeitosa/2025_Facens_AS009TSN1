@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula de Flexbox</title>
+</head>
+<style>
+    .container {
+        border: 2px red solid;
+        /* usando o flexbox */
+        display: flex;
+        width: 300px;
+        height: 100px;
+        /* muda o eixo principal */
+        flex-direction: column;
+        flex-direction: column-reverse;
+        flex-direction: row-reverse;
+        flex-direction: row;
+        /* pular linha */
+        flex-wrap: wrap;
+        flex-wrap: wrap-reverse;
+        flex-wrap: nowrap;
+        /* altera o eixo e define se pula linha */
+        flex-flow: column wrap;
+        flex-flow: row-reverse wrap-reverse;
+        flex-flow: row wrap;
+        /* ajustar conteúdo no eixo principal */
+        justify-content: center;
+        justify-content: flex-end;
+        justify-content: baseline;
+        justify-content: space-around;
+        justify-content: space-between;
+        /* alinha os items no eixo transversal */
+        
+        align-items: flex-start;
+        align-items: center;
+        align-items: flex-end;
+
+    }
+    .item {
+        border: 2px black solid;
+        width: 50px;
+        /* alinha o item específico */
+        align-self: flex-start;
+    
+    }
+    .item2 {
+        border: 2px black solid;
+        width: 70px;
+        font-size: larger;
+        align-self: center;
+        align-self: center;
+    }
+    .item3 {
+        border: 2px black solid;
+        width: 70px;
+        font-size: larger;
+        align-self: center;
+        align-self: flex-end;
+    }
+    .container2 {
+        border: 2px red solid;
+        /* usando o flexbox */
+        display: flex;
+        width: 300px;
+        height: 100px;
+    }
+    .item4 {
+        border: 2px black solid;
+        width: 70px;
+        /* formas de aumentar ou diminuir o tamanho padrão */
+        flex-grow: 1;
+        flex-shrink: 3;
+    }
+    .item5 {
+        border: 2px black solid;
+        width: 70px;
+        flex-grow: 30;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item2">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="item">1</div>
+        <div class="item2">2</div>
+        <div class="item3">3</div>
+    </div>
+    <br>
+    <div class="container2">
+        <div class="item4">1</div>
+        <div class="item5">2</div>
+        <div class="item4">3</div>
+    </div>
+</body>
+</html>
