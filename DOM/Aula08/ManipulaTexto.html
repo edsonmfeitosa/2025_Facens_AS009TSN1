@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom - Manipulação de texto</title>
+</head>
+<body>
+    <h1>Aula de DOM - Manipulando Texto</h1>
+    <p class="porclasse">Primeiro parágrafo</p>
+    <p id="porid">Segundo parágrafo</p>
+    <p>
+        <ul>
+            <li>um</li>
+            <li>dois</li>
+        </ul>
+    </p>
+    <p>
+        <input type="text" name="texto" id="texto">
+    </p>
+</body>
+<script>
+    let titulo = document.querySelector('h1')
+    console.log(titulo)
+    titulo.textContent = 'Título modificado'
+    let paragrafo1 = document.querySelector('.porclasse')
+    paragrafo1.textContent = "alterado"
+    document.querySelector('#porid').textContent = 'alterei o segundo parágrafo'
+    let itens = document.querySelectorAll('li')
+    console.log(itens)
+    itens[1].textContent = 'alterado o segundo elemento'
+    itens[0].innerText = 'foi alterado também'
+    let caixaTexto = document.querySelector('#texto')
+    caixaTexto.value = 'Edson'
+    // pega todos os elementos por tag
+    let paragrafo = document.getElementsByTagName('p')
+    console.log(paragrafo)
+
+</script>
+</html>

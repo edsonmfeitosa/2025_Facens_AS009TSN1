@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Criando elementos HTML</title>
+</head>
+<body>
+    <h1> DOM - Criando elementos html</h1>
+    <p>
+        <label for="valor">Digite o texto:</label>
+        <input type="text" name="valor" id="valor">
+        <button onclick="inserir(event)">Inserir na lista</button>
+    </p>
+    <p>
+        <ul></ul>
+    </p>
+</body>
+<script>
+    function inserir(event) {
+        event.preventDefault()
+        let dado = document.querySelector('#valor').value
+        let lista = document.querySelector('ul')
+        let item = document.createElement('li')
+        item.textContent = dado
+        lista.appendChild(item)
+        document.querySelector('#valor').value = ''
+    }
+</script>
+</html>

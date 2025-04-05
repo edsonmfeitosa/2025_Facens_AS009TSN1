@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Manipular Eventos</title>
+</head>
+<body onload="carregar()">
+    <h1 onmouseenter="passarMouse()">DOM - Manipulação de eventos</h1>
+    <p>
+        <label for="texto">Texto:</label>
+        <input type="text" name="texto" id="texto">
+        <button onclick="contar(event)">Contar</button>
+    </p>
+    <p class="qtd">Quantidade de caracteres:</p>
+</body>
+<script>
+    // Maneira imperativa
+    function carregar() {
+        console.log("Tela carregada com sucesso!")
+    }
+    function passarMouse() {
+        window.alert("Tira o cursor daí!")
+    }
+    // function emfoco() {
+    //     console.log('em foco')
+    // }
+    // Escutador de Eventos
+    let cxtexto = document.querySelector('#texto')
+    cxtexto.addEventListener('focusin', 
+        function () {
+            console.log('em foco')
+        }
+    )
+    cxtexto.addEventListener('focusout', () =>{
+        console.log('fora de focus')
+    })
+    // let corpo = document.querySelector('html')
+    // corpo.addEventListener('click', () => {
+    //     window.alert("clicou!")
+    // })
+    function contar(event) {
+        //tira o comportamento padrão do botão
+        event.preventDefault();
+        let texto = document.querySelector('#texto').value
+        let mostrar = document.querySelector('.qtd')
+        mostrar.textContent = `Quantidade de caracteres: ${texto.length}`
+    }
+</script>
+</html>
