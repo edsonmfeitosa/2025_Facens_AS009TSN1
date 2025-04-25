@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX - PromisseAll</title>
+</head>
+<body>
+    <select name="alunos" id="alunos">
+
+    </select>
+    <hr>
+    <p>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Nome do aluno">
+        <button onclick="consultar(event)">Consultar</button>
+    </p>
+    <p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+               
+            </tbody>
+        </table>
+    </p>
+</body>
+<script>
+    let aluno = []
+    let cliente = []
+    async function todosDados() {
+        const link1 = 'https://67d0b74b825945773eb1b9fe.mockapi.io/aluno'
+        const link2 = 'https://67d0b74b825945773eb1b9fe.mockapi.io/cliente'
+        let resposta = await Promise.all([
+            fetch(link1),
+            fetch(link2)
+        ])
+        aluno = await resposta[0].json()
+        cliente = await resposta[1].json()
+        console.log(aluno)
+        console.log(cliente)
+        let select = document.getElementById('alunos')
+        aluno.forEach(element => {
+            let option = document.createElement('option')
+            option.value = element.id
+            option.innerHTML = element.nome
+            select.appendChild(option)
+        });
+        atualizarTabela()
+    }
+    todosDados()
+    function atualizarTabela() {
+        let tabela = document.getElementById('tabela')
+        tabela.innerHTML = ''
+        aluno.forEach(element => {
+            let tr = document.createElement('tr')
+            let tdNome = document.createElement('td')
+            let tdEmail = document.createElement('td')
+            let tdTelefone = document.createElement('td')
+            tdNome.innerHTML = element.nome
+            tdEmail.innerHTML = element.email
+            tdTelefone.innerHTML = element.telefone
+            tr.appendChild(tdNome)
+            tr.appendChild(tdEmail)
+            tr.appendChild(tdTelefone)
+            tabela.appendChild(tr)
+        });
+    }
+    function consultar(event) {
+        event.preventDefault()
+        let nome = document.getElementById('nome').value
+        let tabela = document.getElementById('tabela')
+        tabela.innerHTML = ''
+        let alunoFiltrado = aluno.filter(element => {
+            return element.nome.toLowerCase().includes(nome.toLowerCase())
+        })
+        alunoFiltrado.forEach(element => {
+            let tr = document.createElement('tr')
+            let tdNome = document.createElement('td')
+            let tdEmail = document.createElement('td')
+            let tdTelefone = document.createElement('td')
+            tdNome.innerHTML = element.nome
+            tdEmail.innerHTML = element.email
+            tdTelefone.innerHTML = element.telefone
+            tr.appendChild(tdNome)
+            tr.appendChild(tdEmail)
+            tr.appendChild(tdTelefone)
+            tabela.appendChild(tr)
+        });
+    }
+</script>
+</html>
